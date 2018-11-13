@@ -1,0 +1,92 @@
+* {
+    font-family: 'Covered By Your Grace', cursive;
+}
+
+body {
+    background: url("../images/qbkls.png");
+}
+
+header {
+    text-align: center;
+    background-color: coral;
+    padding: 25px;
+    color: white;
+}
+
+h1 {
+    font-size: 100px;
+}
+
+h2 {
+    font-size: 80px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 35px;
+}
+
+p {
+    font-size: 25px;
+    line-height: 30px;
+}
+
+
+/*========================== Classes ==========================*/
+
+.game-wrapper {
+    width: 70%;
+    margin: auto;
+}
+
+.mt {
+    margin-top: 20px;
+}
+
+.game-rules {
+    padding: 50px;
+    background-color: lightsalmon;
+}
+
+.nwl-head-row {
+    display: flex;
+}
+
+.nwl-row {
+    display: flex;
+    height: 200px;
+}
+
+.rn-container {
+    width: 30%;
+    padding: 25px;
+    background-color: lightblue;
+}
+
+.ts-container {
+    width: 30%;
+    margin-left: 25px;  
+    padding: 25px;
+    background-color: lightgoldenrodyellow;
+}
+
+.wl-container {
+    width: 30%;
+    margin-left: 25px;
+    padding: 25px;
+    background-color: lightcoral;
+}
+
+/*========================== Ids ==========================*/
+
+
+
+
+
+
+
+
+
+
+
+
