@@ -5,7 +5,7 @@
 
 */
 
-
+$(document).ready(function() {
 
 // Global variables
 
@@ -18,15 +18,14 @@ var cFour = "";
 var wins = 0;
 var loses = 0;
 
-$(document).ready(function() {
 
-    //Randon number generator
-    if (randomNum.length === 0 || randomNum < totalScore) {
+    //Randon number generator when html loads and regenerates if totalScore matches or goes over randomNum
+    //if (randomNum.length === 0 || randomNum < totalScore) {
         //Generate random number between 30 - 60
         randomNum = Math.floor(Math.random() * (60 - 30) + 30);
         //Place on #random-number
         $("#random-number").append(randomNum);
-    }
+    //}
 
     //Generate random number for crystals between 1 - 10
     cOne = Math.floor(Math.random() * 10) + 1;
@@ -47,11 +46,13 @@ $(document).ready(function() {
     //Click crystal two
     $("#cry-two").on("click", function() {
         //Clears total-Score text so the additional click doesn't make string
-        $("#total-Score").text("");
+        //$("#total-Score").text("");
         //Adds value to totalScore
-        totalScore = Number(totalScore) + Number(cTwo);
+        totalScore = (Number(totalScore) + Number(cTwo));
         //Display new totalScore value
-        $("#total-Score").append(totalScore);
+        //$("#total-Score").append(totalScore);
+        $("#total-Score").text(totalScore);
+        console.log("Inside " + totalScore);
     });
 
     //Click crystal three
@@ -79,11 +80,14 @@ $(document).ready(function() {
     //Show loses
     $("#loseCounter").append("Loses = " + loses);
     //Determin if win or lose
-    if (randomNum === totalScore) {
+    /*if ($("#total-Score").text("") === $("#random-number").text("")) {
         wins++;
-    } else if (randomNum < totalScore) {
+    } else if ($("#total-Score").text("") > $("#random-number").text("")) {
         loses++;
-    }
+    }*/
+
+    console.log("Outside " + totalScore);
+
 
 
 });
