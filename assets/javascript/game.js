@@ -52,14 +52,16 @@ $(document).ready(function() {
     });
 
     //Click crystal four
-    $("#cry-four").on("click", function() {
-        //Adds value to totalScore
-        totalScore += Number(cFour);
-        //Display new totalScore value
-        $("#total-Score").text(totalScore);
-        checkWinLose();
-        writeWinLose();
-    });
+    //setTimeout(function() {                       setTimeout only works once when the document is loading. figure out how to make clicks inactive on win or lose
+        $("#cry-four").on("click", function() {
+            //Adds value to totalScore
+            totalScore += Number(cFour);
+            //Display new totalScore value
+            $("#total-Score").text(totalScore);
+            checkWinLose();
+            writeWinLose();
+        });
+    //}, 6000);
 
     writeWinLose();
   
@@ -67,7 +69,9 @@ $(document).ready(function() {
 
 function reset() {
 
-     totalScore = 0;
+    totalScore = 0;
+
+    $(".ts-container").css("background-color","lightgoldenrodyellow");
 
     //Generate random number between 30 - 60
     randomNum = Math.floor(Math.random() * (60 - 30) + 30);
@@ -81,24 +85,30 @@ function reset() {
     cFour = Math.floor(Math.random() * 10) + 1;
 }
 
+//Guess what this function does? Checks to see if you win or lose...
 function checkWinLose () {
     var winloss = false;
     if (randomNum === totalScore) {
         wins++;
-        $("#total-Score").css("color","green");
-        setTimeout(function(){$("#total-Score").text(""); $("#total-Score").css("color","lightgoldenrodyellow");}, 1500);
+        $(".ts-container").css("background-color","green");
+        setTimeout(function(){$("#total-Score").text("")}, 1000);
         //calling to the reset function
         winloss = true;
-        //$("#winCounter").text("Wins = " + wins);
+
+        //setTimeout(winloss = true, 500)
+        //setTimeout(function(){(winloss = true)}, 500);
     } else if (totalScore > randomNum) {
         loses++;
-        $("#total-Score").css("color","red");
-        setTimeout(function(){$("#total-Score").text(""); $("#total-Score").css("color","lightgoldenrodyellow");}, 1500);
+        $(".ts-container").css("background-color","red");
+        setTimeout(function(){$("#total-Score").text("")}, 1000);
+        //calling to the reset function
         winloss = true;
-        //$("#loseCounter").text("Loses = " + loses);
+
+        //setTimeout(winloss = true, 500)
+        //setTimeout(function(){(winloss = true)}, 500);
     }
 
-    if (winloss) reset();
+    if (winloss) setTimeout(function(){reset()}, 1000);
 }
 
 //Does as the function name states... writes to each id with the variables value.
@@ -106,5 +116,3 @@ function writeWinLose() {
     $("#winCounter").text("Wins = " + wins);
     $("#loseCounter").text("Loses = " + loses);   
 }
-
-console.log("Outside ready " + totalScore);
